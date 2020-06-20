@@ -1,4 +1,4 @@
-export let getAnimatedListOfVisitedElements = []
+export let getAnimatedListOfVisitedElementsBS = []
 
 // const  binarySearch = (element, array, startIndex, endIndex) => {
 //     if (startIndex > endIndex)
@@ -7,14 +7,14 @@ export let getAnimatedListOfVisitedElements = []
 //     let midIndex = Math.floor((startIndex + endIndex) / 2)
 //     console.log(startIndex, midIndex, endIndex, element, array[midIndex])
 //     if (element === array[midIndex]) {
-//         getAnimatedListOfVisitedElements.push([startIndex, midIndex, endIndex])
+//         getAnimatedListOfVisitedElementsBS.push([startIndex, midIndex, endIndex])
 
 //         console.log('===')
 //         return midIndex
 //     }
 
 //     else if (element < array[midIndex]) {
-//         getAnimatedListOfVisitedElements.push([startIndex, midIndex, endIndex])
+//         getAnimatedListOfVisitedElementsBS.push([startIndex, midIndex, endIndex])
 
 //         console.log('<')
 
@@ -23,14 +23,14 @@ export let getAnimatedListOfVisitedElements = []
 //     else {
 
 //         console.log('>')
-//         getAnimatedListOfVisitedElements.push([startIndex, midIndex, endIndex])
+//         getAnimatedListOfVisitedElementsBS.push([startIndex, midIndex, endIndex])
 
 //         binarySearch(element, array, midIndex+1, endIndex)
 //     }
 
 // }
 function binarySearch(element, array){
-    getAnimatedListOfVisitedElements = []
+    getAnimatedListOfVisitedElementsBS = []
     let startIndex  = 0
     let endIndex = array.length-1
     
@@ -40,21 +40,21 @@ function binarySearch(element, array){
         console.log(startIndex, midIndex, endIndex, element, array[midIndex])
     
         if (element == array[midIndex]) {
-            getAnimatedListOfVisitedElements.push([startIndex, midIndex, endIndex])
+            getAnimatedListOfVisitedElementsBS.push([startIndex, midIndex, endIndex])
             console.log('===', midIndex)
             a.push(midIndex)
             return parseInt(midIndex)
         }
 
         if (element < array[midIndex]) {
-            getAnimatedListOfVisitedElements.push([startIndex, midIndex, endIndex])
+            getAnimatedListOfVisitedElementsBS.push([startIndex, midIndex, endIndex])
 
             console.log('<')
             endIndex = midIndex - 1
         }
         else {
             console.log('>')
-            getAnimatedListOfVisitedElements.push([startIndex, midIndex, endIndex])
+            getAnimatedListOfVisitedElementsBS.push([startIndex, midIndex, endIndex])
             startIndex = midIndex + 1
         }
     }

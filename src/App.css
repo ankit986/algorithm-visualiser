@@ -2,10 +2,14 @@
   text-align: center;
 }
 
+h3{
+  font-weight: 1;
+}
+
 .box {
-  width: 65px;
+  width: 55px;
   border: 2px solid black;
-  height: 65px;
+  height: 55px;
   font-size: 25px;
   display: flex;
   align-items: center;
@@ -14,12 +18,12 @@
 }
 
 .number-container {
-  display: flex;
   justify-content: center;
   align-items: center;
-  margin: 80px 20px;
-  border: 2px solid gray;
-  padding: 50px 0px;
+  margin: 20px 20px;
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+  border: 1px solid gray;
+  padding: 20px 20px;
 }
 
 .selected-box {
@@ -43,11 +47,10 @@
 
 .outer-box {
   display: flex;
-  height: 150px;
-  justify-content: center;
-  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
-  margin: 20px;
-  padding: 20px;
+justify-content: center;
+box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+margin: 10px 5px;
+padding: 10px;
 }
 
 .search-box {
