@@ -15,7 +15,12 @@ import React from 'react'
                 </svg>
             </a>
             <div className="flex-grow pa3 flex items-center">
-                <a className="f6 link dib black dim mr3 mr4-ns" href="#0">Searching</a>
+                <select className="f6 ba b--white bg-white input-reset pa2 dim link pointer black  mr3 mr4-ns">
+                    <option className='ba b--white bg-white'>Search</option>
+                    <option className='ba b--white bg-white'>Binary Search</option>
+                    <option className='ba b--white bg-white'>Linear Search</option>
+                    <option className='ba b--white bg-white'>Jump Search</option>
+                </select>
                 <a className="f6 link dib black dim mr3 mr4-ns" href="#0">Sorting</a>
             </div>
         </nav>

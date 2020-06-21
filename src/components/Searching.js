@@ -4,6 +4,7 @@ import binarySearch, {getAnimatedListOfVisitedElementsBS} from "../algorithms/se
 import linearSearch, {getAnimatedListOfVisitedElementsLS} from "../algorithms/searching/linearSearch";
 import NavBar from "./NavBar";
 import jumpSearch, {getAnimatedListOfVisitedElementsJS,} from "../algorithms/searching/jumpSearch";
+import interpolationSearch, { getAnimatedListOfVisitedElementsIS } from "../algorithms/searching/interpolationSearch";
 
 const ANIMATION_TIME_GAP = 500;
 
@@ -14,6 +15,7 @@ class Searching extends Component {
     numberOfIterationByBinarySearch: "",
     numberOfIterationByLinearSearch: "",
     numberOfIterationByJumpSearch: "",
+    numberOfIterationByInterpolationSearch: "",
     elementFoundIndex: 0,
     completed: false,
     running: false,
@@ -53,6 +55,7 @@ class Searching extends Component {
     const foundIndex = binarySearch(element, array);
     const getAnimatedElements = getAnimatedListOfVisitedElementsBS;
     // console.log('number of iteration ', getAnimatedElements.length)
+    console.log('interp ',interpolationSearch(element, array))
     for (let j = 0; j < getAnimatedElements.length * 2; j++) {
       this.setState({
         running: true,
@@ -159,10 +162,10 @@ class Searching extends Component {
       let animatedList = getAnimatedElements[Math.floor(j / 2)];
       let currentIndex = animatedList[0];
 
-      console.log(currentIndex);
+      // console.log(currentIndex);
       if (j % 2 === 0)
         setTimeout(() => {
-          console.log("currentIndex ", currentIndex);
+          // console.log("currentIndex ", currentIndex);
           getBoxes[currentIndex].className = "Jump-Search-box box selected-box";
         }, j * ANIMATION_TIME_GAP);
       else
@@ -190,37 +193,35 @@ class Searching extends Component {
   };
 
   doInterpolationSearch = (element, array) => {
-    let getBoxes = document.getElementsByClassName("Jump-Search-box");
-    getBoxes[this.state.elementFoundIndex].className = "Jump-Search-box box";
+    let getBoxes = document.getElementsByClassName("Interpolation-Search-box");
+    getBoxes[this.state.elementFoundIndex].className = "Interpolation-Search-box box";
 
-    const foundIndex = jumpSearch(element, array);
+    const foundIndex = interpolationSearch(element, array);
     // console.log('djs', element, array, foundIndex)
-    const getAnimatedElements = getAnimatedListOfVisitedElementsJS;
+    const getAnimatedElements = getAnimatedListOfVisitedElementsIS;
     // console.log('getanimatedlist ', getAnimatedElements)
     for (let j = 0; j < getAnimatedElements.length * 2; j++) {
       let animatedList = getAnimatedElements[Math.floor(j / 2)];
       let currentIndex = animatedList[0];
 
-      console.log(currentIndex);
       if (j % 2 === 0)
         setTimeout(() => {
-          console.log("currentIndex ", currentIndex);
-          getBoxes[currentIndex].className = "Jump-Search-box box selected-box";
+          getBoxes[currentIndex].className = "Interpolation-Search-box box selected-box";
         }, j * ANIMATION_TIME_GAP);
       else
         setTimeout(() => {
           if (parseInt(array[currentIndex]) !== element) {
-            getBoxes[currentIndex].className = "Jump-Search-box box";
+            getBoxes[currentIndex].className = "Interpolation-Search-box box";
           }
           if (currentIndex === foundIndex) {
-            getBoxes[currentIndex].className = "Jump-Search-box box answer";
+            getBoxes[currentIndex].className = "Interpolation-Search-box box answer";
           }
           this.setState({
             elementFoundIndex: foundIndex !== -1 ? foundIndex : "not found",
           });
 
-          this.setState(({ numberOfIterationByJumpSearch }) => ({
-            numberOfIterationByJumpSearch: numberOfIterationByJumpSearch + 1,
+          this.setState(({ numberOfIterationByInterpolationSearch }) => ({
+            numberOfIterationByInterpolationSearch: numberOfIterationByInterpolationSearch + 1,
           }));
         }, j * ANIMATION_TIME_GAP);
       if (j == getAnimatedElements.length - 1) {
@@ -364,12 +365,14 @@ class Searching extends Component {
         numberOfIterationByBinarySearch: 0,
         numberOfIterationByLinearSearch: 0,
         numberOfIterationByJumpSearch: 0,
+        numberOfIterationByInterpolationSearch: 0,
         elementFoundIndex: undefined,
         completed: false,
       });
       this.doBinarySearch(this.state.numberToFind, this.state.array);
       this.doLinearSearch(this.state.numberToFind, this.state.array);
       this.doJumpSearch(this.state.numberToFind, this.state.array);
+      this.doInterpolationSearch(this.state.numberToFind, this.state.array);
     };
     const handleInput = (e) => {
       e.preventDefault();
@@ -386,6 +389,7 @@ class Searching extends Component {
       numberOfIterationByJumpSearch,
       numberOfIterationByBinarySearch,
       numberOfIterationByLinearSearch,
+      numberOfIterationByInterpolationSearch,
     } = this.state;
     return (
       <div>
@@ -438,6 +442,15 @@ class Searching extends Component {
         </div>
 
         <div style={{ marginTop: "50px" }}>
+        <VisualisationArea
+            name="Interpolation-Search"
+            element={numberToFind}
+            array={array}
+            algorithmName={"Interpolation Search"}
+            numberOfIteration={numberOfIterationByInterpolationSearch}
+            completed={completed}
+            elementFoundIndex={elementFoundIndex}
+          />
           <VisualisationArea
             name="Binary-Search"
             element={numberToFind}
@@ -465,6 +478,7 @@ class Searching extends Component {
             completed={completed}
             elementFoundIndex={elementFoundIndex}
           />
+        
         </div>
       </div>
     );
