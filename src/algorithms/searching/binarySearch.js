@@ -1,34 +1,5 @@
 export let getAnimatedListOfVisitedElementsBS = []
 
-// const  binarySearch = (element, array, startIndex, endIndex) => {
-//     if (startIndex > endIndex)
-//         return 'NO'
-
-//     let midIndex = Math.floor((startIndex + endIndex) / 2)
-//     console.log(startIndex, midIndex, endIndex, element, array[midIndex])
-//     if (element === array[midIndex]) {
-//         getAnimatedListOfVisitedElementsBS.push([startIndex, midIndex, endIndex])
-
-//         console.log('===')
-//         return midIndex
-//     }
-
-//     else if (element < array[midIndex]) {
-//         getAnimatedListOfVisitedElementsBS.push([startIndex, midIndex, endIndex])
-
-//         console.log('<')
-
-//         binarySearch(element, array, startIndex, midIndex-1)
-//     }
-//     else {
-
-//         console.log('>')
-//         getAnimatedListOfVisitedElementsBS.push([startIndex, midIndex, endIndex])
-
-//         binarySearch(element, array, midIndex+1, endIndex)
-//     }
-
-// }
 function binarySearch(element, array){
     getAnimatedListOfVisitedElementsBS = []
     let startIndex  = 0
@@ -37,11 +8,11 @@ function binarySearch(element, array){
     let a = []
     while (startIndex <= endIndex) {
         let midIndex = Math.floor((startIndex + endIndex) / 2)
-        console.log(startIndex, midIndex, endIndex, element, array[midIndex])
+        // console.log(startIndex, midIndex, endIndex, element, array[midIndex])
     
         if (element == array[midIndex]) {
             getAnimatedListOfVisitedElementsBS.push([startIndex, midIndex, endIndex])
-            console.log('===', midIndex)
+            // console.log('===', midIndex)
             a.push(midIndex)
             return parseInt(midIndex)
         }
@@ -49,11 +20,11 @@ function binarySearch(element, array){
         if (element < array[midIndex]) {
             getAnimatedListOfVisitedElementsBS.push([startIndex, midIndex, endIndex])
 
-            console.log('<')
+            // console.log('<')
             endIndex = midIndex - 1
         }
         else {
-            console.log('>')
+            // console.log('>')
             getAnimatedListOfVisitedElementsBS.push([startIndex, midIndex, endIndex])
             startIndex = midIndex + 1
         }
