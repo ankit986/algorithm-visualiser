@@ -2,13 +2,14 @@ import React, { Component } from "react";
 import "../App.css";
 import AnalysisBox from "./AnalysisBox";
 
-class VisualisationArea extends Component {
+class SearchingVisualisationArea extends Component {
   render() {
     const { array, name } = this.props;
-    const { numberOfIteration, completed, algorithmName, elementFoundIndex } = this.props
-
+    const { numberOfIteration, completed,currentAlgorithmName, thisAlgorithmName, elementFoundIndex } = this.props
     return (
       <>
+      {
+        currentAlgorithmName === thisAlgorithmName?
         <div className="number-container">
           <h2 style={{ marginTop: "0px" }}>{name}</h2>
           <div style={{ display: "flex", margin: "0 5%" }}>
@@ -24,10 +25,10 @@ class VisualisationArea extends Component {
             completed={completed}
             elementFoundIndex={elementFoundIndex}
           />
-        </div>
+        </div>:''}
       </>
     );
   }
 }
 
-export default VisualisationArea;
+export default SearchingVisualisationArea;

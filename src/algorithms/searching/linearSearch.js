@@ -10,7 +10,7 @@ function linearSearch(element, array){
            return i
        }
    }
-    return 
+    return -1
 }
 
 export default linearSearch

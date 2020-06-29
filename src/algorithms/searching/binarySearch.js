@@ -29,6 +29,7 @@ function binarySearch(element, array){
             startIndex = midIndex + 1
         }
     }
+    return -1
 }
 
 export default binarySearch
