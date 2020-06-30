@@ -28,9 +28,9 @@ class App extends React.Component {
     return (
       <div className="App">
         <NavBar />
-        <Searching currentSearchingAlgorithmName={currentSearchingAlgorithmName} />
-{/* 
-        <Sorting /> */}
+        {/* <Searching currentSearchingAlgorithmName={currentSearchingAlgorithmName} /> */}
+
+        <Sorting />
       </div>
     );
   }
